@@ -16,7 +16,7 @@ public class ReadWrite extends AircraftFactory {
             int simulations = positiveIntTryParse(scenarios.get(0));
             String line[];
             for (int i = 1; i < scenarios.size(); i++){
-                line = scenarios.get(i).split(" ");
+                line = scenarios.get(i).split("\\s+");
                 if (line.length == 5) {
                     type = line[0];
                     name = line[1];
@@ -30,9 +30,9 @@ public class ReadWrite extends AircraftFactory {
                 }
             }
 
-            for (Flyable f: aircrafts) {
-                System.out.println(f);
-            }
+//            for (Flyable f: aircrafts) {
+//                System.out.println(f);
+//            }
         } catch (Exception e){
             e.printStackTrace();
             System.exit(0);

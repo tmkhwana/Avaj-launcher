@@ -20,13 +20,20 @@ public class Coordinates {
             height = 100;
     }
 
-    public int getLongitude(){
-        return this.longitude;
+    public int getLongitude()
+    {
+        //return this.longitude;
+        return longitude;
     }
-    public int getLatitude(){
-        return this.latitude;
+    public int getLatitude()
+    {
+    //    return this.latitude;
+        return latitude;
     }
-    public int getHeight(){
-        return this.height;
+    public int getHeight()
+    {
+        //return this.height;
+        return height;
+
     }
 }

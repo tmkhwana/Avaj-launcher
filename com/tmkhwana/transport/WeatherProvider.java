@@ -1,17 +1,21 @@
 package com.tmkhwana.transport;
 
 public class WeatherProvider {
-    private WeatherProvider weatherProvider;
-    private String weather;
+
+    private static WeatherProvider weatherProvider;
+
+    private static String[] weather = {"RAIN", "FOG", "SUN", "SNOW"};
+
     private WeatherProvider(){
 
     }
 
-    public WeatherProvider getProvider() {
+    public  static WeatherProvider getProvider() {
         return weatherProvider;
     }
-//    public getCurrentWeather (Coordinates coordinates){
-//
-//    }
+    public String getCurrentWeather (Coordinates coordinates){
+        int getPosition = coordinates.getHeight() + coordinates.getLatitude() + coordinates.getLongitude();
+        return weather[getPosition % 4];
+    }
 
 }

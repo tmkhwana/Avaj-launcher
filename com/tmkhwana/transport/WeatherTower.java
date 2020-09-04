@@ -1,11 +1,12 @@
 package com.tmkhwana.transport;
 
-public class WeatherTower {
+public class WeatherTower extends Tower{
+
     public String getWeather(Coordinates coordinates){
 
-        return "hey";
+        return WeatherProvider.getProvider().getCurrentWeather(coordinates);
     }
     private void changeWeather() {
-
+        this.conditionsChanged();
     }
 }

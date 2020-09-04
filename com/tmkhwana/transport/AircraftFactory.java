@@ -1,7 +1,7 @@
 package com.tmkhwana.transport;
 
 public abstract class AircraftFactory {
-    public Flyable newAircraft(String type, String name, int longitude, int latitude, int height) throws Exception {
+    public static Flyable newAircraft(String type, String name, int longitude, int latitude, int height) throws Exception {
         try {
             switch (type) {
                 case "Baloon":
