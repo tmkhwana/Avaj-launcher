@@ -5,47 +5,8 @@ import java.util.ArrayList;
 
 public class ReadWrite extends AircraftFactory {
     public static ArrayList<String> MESSAGES = new ArrayList<>();
-    public static void main(String[] args) {
-        ReadWrite r = new ReadWrite();
-        ArrayList<String> scenarios = readScenario(args[0]);
-        String type, name;
-        int longitude, latitude, height;
-        ArrayList<Flyable> aircrafts = new ArrayList<>();
 
-        try {
-            int simulations = positiveIntTryParse(scenarios.get(0));
-            String line[];
-            for (int i = 1; i < scenarios.size(); i++){
-                line = scenarios.get(i).split("\\s+");
-                if (line.length == 5) {
-                    type = line[0];
-                    name = line[1];
-                    longitude = positiveIntTryParse(line[2]);
-                    latitude = positiveIntTryParse(line[3]);
-                    height = positiveIntTryParse(line[4]);
-
-                    aircrafts.add(r.newAircraft(type, name, longitude, latitude, height));
-                } else {
-                    throw new Exception("Invalid Aircraft Info");
-                }
-            }
-
-//            for (Flyable f: aircrafts) {
-//                System.out.println(f);
-//            }
-        } catch (Exception e){
-            e.printStackTrace();
-            System.exit(0);
-        }
-
-
-
-
-//        String s = writeSimulation();
-//        System.out.println(s);
-    }
-
-    public static int positiveIntTryParse(String value) throws NumberFormatException{
+    public int positiveIntTryParse(String value) throws NumberFormatException{
         int i;
         try {
             i  = Integer.parseInt(value);
@@ -58,7 +19,7 @@ public class ReadWrite extends AircraftFactory {
         return i;
     }
 
-    public static ArrayList<String> readScenario(String scenario){
+    public ArrayList<String> readScenario(String scenario){
         ArrayList<String> scenarios = new ArrayList<>();
         try {
             FileReader object = new FileReader(scenario);

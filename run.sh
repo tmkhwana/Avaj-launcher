@@ -1,2 +1,4 @@
-javac com/tmkhwana/transport/ReadWrite.java
-java com.tmkhwana.transport.ReadWrite scenario.txt
+
+find . -name *.java > sources.txt
+javac -sourcepath . @sources.txt
+java com.tmkhwana.transport.Simulator scenario.txt

@@ -11,29 +11,25 @@ public class Coordinates {
         this.height = height;
 
         if (longitude < 0)
-            longitude = 0;
+            this.longitude = 0;
         if (latitude < 0)
-            latitude = 0;
+            this.latitude = 0;
         if (height < 0)
-            height = 0;
+            this.height = 0;
         if (height > 100)
-            height = 100;
+            this.height = 100;
     }
 
     public int getLongitude()
     {
-        //return this.longitude;
-        return longitude;
+        return this.longitude;
     }
     public int getLatitude()
     {
-    //    return this.latitude;
-        return latitude;
+        return this.latitude;
     }
     public int getHeight()
     {
-        //return this.height;
-        return height;
-
+        return this.height;
     }
 }

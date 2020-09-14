@@ -6,7 +6,7 @@ public class WeatherTower extends Tower{
 
         return WeatherProvider.getProvider().getCurrentWeather(coordinates);
     }
-    private void changeWeather() {
+    void changeWeather() {
         this.conditionsChanged();
     }
 }

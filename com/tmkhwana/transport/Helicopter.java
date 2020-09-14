@@ -8,21 +8,39 @@ public class Helicopter extends Aircraft implements Flyable {
         super(name, coordinates);
     }
 
+    @Override
     public void updateConditions() {
-        String cond = weatherTower.getWeather(this.coordinates);
+        String weather = weatherTower.getWeather(this.coordinates);
 
-        System.out.printf("%s");
+        String apply = "Helicopter#" + this.name + "(" + this.id + "): ";
 
+        if (weather.equals("SUN")){
+            this.coordinates = new Coordinates(coordinates.getLongitude()  + 10, coordinates.getLatitude(), coordinates.getHeight() + 2);
+            ReadWrite.MESSAGES.add(apply + "It's blazing HOT!!");
+        }
+        else if (weather.equals("RAIN")){
+            this.coordinates = new Coordinates(coordinates.getLongitude()  + 5, coordinates.getLatitude(), coordinates.getHeight());
+            ReadWrite.MESSAGES.add(apply + "The rain is too much!!");
+        }
+        else if (weather.equals("FOG")){
+            this.coordinates = new Coordinates(coordinates.getLongitude()  + 1, coordinates.getLatitude(), coordinates.getHeight());
+            ReadWrite.MESSAGES.add(apply + "I cannot see i am gonna hit the clouds!!");
+        }
+        else if (weather.equals("SNOW")){
+            this.coordinates = new Coordinates(coordinates.getLongitude(), coordinates.getLatitude(), coordinates.getHeight() - 12);
+            ReadWrite.MESSAGES.add(apply + "its cold up here!!");
+        }
 
-        if (cond.equals("SUN")){
-            this.coordinates = new Coordinates(coordinates.getLongitude()  + 2, coordinates.getLatitude() + 0, coordinates.getHeight() + 4);
-            System.out.println(" Let's enjoy the Sun");
+        if (coordinates.getHeight() <= 0){
+           weatherTower.unregister(this);
+            ReadWrite.MESSAGES.add("Tower says: Helicopter#" + this.name + "(" + this.id + "): Unregistered to the Tower");
         }
     }
 
+    @Override
     public void registerTower(WeatherTower weatherTower) {
         this.weatherTower = weatherTower;
         weatherTower.register(this);
-        System.out.println("Tower says: Helicopter" + this.name);
+        ReadWrite.MESSAGES.add("Tower says: Helicopter#" + this.name + "(" + this.id + "): Registered to the Tower");
     }
 }
